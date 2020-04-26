@@ -7,13 +7,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.MultivaluedMap;
-import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -32,7 +28,7 @@ public class RestClientService {
     @Value("${RestClient.connection_timeout}")
     private static String connection_timeout;
 
-    private static Logger LOGGER = LoggerFactory.getLogger(this.getClass());
+    private static Logger LOGGER = LoggerFactory.getLogger(RestClientService.class);
 
     static int RestClientThreadPoolSizeVal=(RestClientThreadPoolSize!=null)?Integer.parseInt(RestClientThreadPoolSize):10;
     static int read_timeout_val=(read_timeout!=null)?Integer.parseInt(read_timeout):10;
