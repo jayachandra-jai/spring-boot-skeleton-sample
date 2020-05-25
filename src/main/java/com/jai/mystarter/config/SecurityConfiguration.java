@@ -5,7 +5,7 @@ import com.jai.mystarter.security.CustomBasicAuthenticationEntryPoint;
 import com.jai.mystarter.security.Encoders;
 import com.jai.mystarter.security.filters.JWTAuthenticationFilter;
 import com.jai.mystarter.security.filters.JWTAuthorizationFilter;
-import com.jai.mystarter.services.UserService;
+import com.jai.mystarter.services.UserDetailImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -41,7 +41,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private UserDetailsService userDetailsService;
 
     @Autowired
-    private UserService userService;
+    private UserDetailImpl userDetailImpl;
 
     @Autowired
     private PasswordEncoder userPasswordEncoder;
@@ -55,7 +55,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .addFilter(new JWTAuthenticationFilter(authenticationManager()))
-                .addFilter(new JWTAuthorizationFilter(authenticationManager(),userService))
+                .addFilter(new JWTAuthorizationFilter(authenticationManager(), userDetailImpl))
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .exceptionHandling()//default response if the client wants to get a resource unauthorized

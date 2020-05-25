@@ -3,7 +3,7 @@ package com.jai.mystarter.security.filters;
 
 import com.jai.mystarter.models.auth.User;
 import com.jai.mystarter.security.UserSessionCache;
-import com.jai.mystarter.services.UserService;
+import com.jai.mystarter.services.UserDetailImpl;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import org.slf4j.Logger;
@@ -26,11 +26,11 @@ import static com.jai.mystarter.security.SecurityConstants.*;
 
 public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 
-   private UserService userService;
+   private UserDetailImpl userDetailImpl;
 
-    public JWTAuthorizationFilter(AuthenticationManager authManager, UserService userService) {
+    public JWTAuthorizationFilter(AuthenticationManager authManager, UserDetailImpl userDetailImpl) {
         super(authManager);
-        this.userService=userService;
+        this.userDetailImpl = userDetailImpl;
     }
     private Logger logger = LoggerFactory.getLogger(this.getClass());
     @Override
@@ -63,7 +63,7 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
                 if (user != null) {
                     User userInfo= UserSessionCache.getInstance().getUserSession(user);
                     if(null==userInfo) {
-                        userInfo = userService.findByUsername(user);
+                        userInfo = userDetailImpl.findByUsername(user);
                         logger.info("User not present in cache taking from DB");
                         UserSessionCache.getInstance().addUserSession(user,userInfo);
                     }

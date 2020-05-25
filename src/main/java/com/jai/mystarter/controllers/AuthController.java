@@ -5,6 +5,7 @@ import com.jai.mystarter.models.auth.Role;
 import com.jai.mystarter.models.auth.User;
 import com.jai.mystarter.repository.RoleRepository;
 import com.jai.mystarter.repository.UserRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +21,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashSet;
 import java.util.Set;
 
-
+@Slf4j
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
 
-    private Logger logger = LoggerFactory.getLogger(AuthController.class);
+
     @Autowired
     AuthenticationManager authenticationManager;
 
@@ -41,7 +42,7 @@ public class AuthController {
 
     @RequestMapping(value = "/sign_up", method = RequestMethod.GET)
     public ResponseEntity<?> signUp(User user){
-        logger.info("Sign Up");
+        log.info("Sign Up");
         user.setUsername("jai.js");
         user.setPassword(userPasswordEncoder.encode("1234"));
         Set<Role> roleSet=new HashSet<>();
