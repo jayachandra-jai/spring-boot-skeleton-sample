@@ -2,6 +2,8 @@ package com.jai.mystarter.models.auth;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,12 +20,40 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "username")
+    @Column(name = "username",unique=true)
     private String username;
 
     @Column(name = "password")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
+
+    @Column(name = "full_name")
+    private String full_name;
+
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "phone")
+    private String phone;
+
+    @Column(name = "created_at")
+    @CreationTimestamp
+    private java.sql.Timestamp created_at;
+
+    @Column(name = "updated_at")
+    @UpdateTimestamp
+    private java.sql.Timestamp updated_at;
+
+    @Column(name = "password_updated_at")
+    private java.sql.Timestamp password_updated_at;
+
+
+    @Column(name = "created_by")
+    private String created_by;
+
+    @Column(name = "last_updated_by")
+    private String last_updated_by;
+
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(	name = "user_roles",

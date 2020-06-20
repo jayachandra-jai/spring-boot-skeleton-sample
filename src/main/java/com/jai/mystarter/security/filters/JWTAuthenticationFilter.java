@@ -2,7 +2,7 @@ package com.jai.mystarter.security.filters;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jai.mystarter.models.auth.User;
-import com.jai.mystarter.models.dto.Login;
+import com.jai.mystarter.models.dto.utils.Login;
 import com.jai.mystarter.security.UserSessionCache;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -37,7 +37,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                                                 HttpServletResponse res) throws AuthenticationException {
         try {
             Login credentials = new ObjectMapper().readValue(req.getInputStream(), Login.class);
-            // check type of username, if type == admin then continue else return.
+            // we can custom validation here
             return authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
                             credentials.getUsername(),

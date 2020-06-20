@@ -1,4 +1,4 @@
-package com.jai.mystarter.models.dto;
+package com.jai.mystarter.models.dto.utils;
 
 import lombok.Data;
 

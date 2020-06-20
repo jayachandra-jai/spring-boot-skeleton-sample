@@ -1,8 +1,7 @@
 package com.jai.mystarter.controllers;
 
+import com.jai.mystarter.models.dto.utils.GenericResponse;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,17 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RestController
-@RequestMapping("/open")
-public class TestController {
+@RequestMapping("/api")
+public class MainController {
     @RequestMapping(value = "/test", method = RequestMethod.GET)
-    public ResponseEntity<?> test(){
+    public ResponseEntity<GenericResponse> test(){
         log.info("Simple API Call");
-        return new ResponseEntity<String>("Test API", HttpStatus.OK);
+        GenericResponse response=new GenericResponse();
+        return new ResponseEntity<GenericResponse>(response, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/apiDoc", method = RequestMethod.GET)
-    public String apIDoc(){
-        log.info("Simple API Call");
-        return "redirect:swagger-ui.html";
-    }
 }
