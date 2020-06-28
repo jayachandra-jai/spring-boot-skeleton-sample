@@ -51,7 +51,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.httpBasic().disable()
                 .cors().and().csrf().disable().authorizeRequests()
-                 .antMatchers( "/api/auth/add-first-admin").permitAll()
+                 .antMatchers( "/api/user/add-first-admin").permitAll()
+                .antMatchers( "/static/**").permitAll()
                 .antMatchers("/open/**").permitAll()
                 .antMatchers("/v2/api-docs",
                         "/configuration/ui",
