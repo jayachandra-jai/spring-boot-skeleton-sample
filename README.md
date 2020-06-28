@@ -13,6 +13,39 @@ This is a simple Spring boot skeleton for creating a new REST Application. This 
       * lombok 1.18.8
       * Logging Enabled with Slf4j
       * Simple Login, Sign Up API's
+ ## Steps to Setup
+
+**1. Clone the application**
+
+```bash
+https://github.com/jayachandra-jai/spring-boot-skeleton-sample.git
+```
+
+**2. Create Postgres database**
+```bash
+create database user_database
+```
+
+**3. Change Postgres username and password as per your installation**
+
++ open `src/main/resources/application.properties`
+
++ change `spring.datasource.username` and `spring.datasource.password` as per your Postgres installation
+
+**4. Build and run the app using maven**
+
+```bash
+mvn clean insatll
+mvn package
+java -jar target/spring-boot-skeleton-sample-0.0.1-SNAPSHOT.jar
+
+```
+
+Alternatively, you can run the app without packaging it using -
+
+```bash
+mvn spring-boot:run
+```
     
       
 
