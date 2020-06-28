@@ -46,6 +46,10 @@ Alternatively, you can run the app without packaging it using -
 ```bash
 mvn spring-boot:run
 ```
+**5. Test the application**
++ Add Dummy Admin `curl http://localhost:<PORT>/app/api/user/add-first-admin`
++ Check Swager API Doument `http://localhost:<PORT>/app/swagger-ui.html` 
+
     
       
 
