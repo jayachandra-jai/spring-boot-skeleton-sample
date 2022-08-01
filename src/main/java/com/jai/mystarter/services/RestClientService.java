@@ -13,9 +13,7 @@ import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-/**
- * Created by mohit on 27/8/15.
- */
+
 @Service
 public class RestClientService {
 

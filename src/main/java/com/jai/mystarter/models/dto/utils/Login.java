@@ -4,9 +4,6 @@ import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
 
-/**
- * Created by Mohit on 16/05/18.
- */
 @Data
 public class Login {
 
