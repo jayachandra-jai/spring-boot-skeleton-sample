@@ -1,6 +1,7 @@
 # spring-boot-skeleton-sample
 This is a simple Spring boot skeleton for creating a new REST Application. This project has the all minimum requirements for creating a REST application using sparing boot. 
 
+
   ### Technologies/concepts Used
       * Java 8
       * Maven 3
